@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 env:
   ITCHIO_USERNAME: edearth
-  ITCHIO_GAME: malaga-jam-enero-2024
+  ITCHIO_GAME: falda-montana
   BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
   GODOT_VERSION: 4.2.1
 
