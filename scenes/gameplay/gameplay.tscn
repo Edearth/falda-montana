@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scenes/gameplay/player-character.gd" id="1_x4a8u"]
 [ext_resource type="Script" path="res://scenes/gameplay/trampoline/trampoline-manager.gd" id="2_x7po0"]
 [ext_resource type="Texture2D" uid="uid://bveq7w6bpd8l6" path="res://assets/square.svg" id="4_iy44v"]
+[ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="5_h12vd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnr8y"]
 radius = 32.0
@@ -16,7 +17,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_u3yr4")
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="."]
-position = Vector2(288, -468)
+position = Vector2(300, 300)
 script = ExtResource("1_x4a8u")
 max_bounce = 1.6
 min_bounce = 0.9
@@ -53,3 +54,7 @@ shape = SubResource("RectangleShape2D_8jgpq")
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D2"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_iy44v")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(300, 400)
+script = ExtResource("5_h12vd")
