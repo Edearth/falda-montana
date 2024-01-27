@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://g6i6xqvaxk81"]
+
+[ext_resource type="Texture2D" uid="uid://dds1sdaxddjq" path="res://assets/circle.svg" id="1_18x6o"]
+[ext_resource type="Script" path="res://scenes/gameplay/rock/rock_hit.gd" id="2_f6cby"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gafgp"]
+radius = 65.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eggec"]
+radius = 43.0116
+
+[node name="Rock" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gafgp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_18x6o")
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("2_f6cby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_eggec")
+
+[connection signal="body_entered" from="HitArea" to="HitArea" method="_on_body_entered"]

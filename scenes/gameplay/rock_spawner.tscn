@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcgm675xw4oul"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/rock/rock_spawner.gd" id="1_cglio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ch2b"]
+size = Vector2(500, 20)
+
+[node name="RockSpawner" type="Area2D"]
+position = Vector2(-8, -488)
+script = ExtResource("1_cglio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_7ch2b")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

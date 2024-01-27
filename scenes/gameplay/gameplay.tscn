@@ -78,6 +78,12 @@ shape = SubResource("RectangleShape2D_8jgpq")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_iy44v")
 
+[node name="RockSpawn" type="Area2D" parent="Camera2D"]
+position = Vector2(-300, -400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/RockSpawn"]
+shape = SubResource("RectangleShape2D_7ch2b")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
