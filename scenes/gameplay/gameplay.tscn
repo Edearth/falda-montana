@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=17 format=3 uid="uid://iaq32s2ve124"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/bottom_floor.gd" id="1_id8xs"]
 [ext_resource type="Script" path="res://scenes/gameplay/player-character.gd" id="1_x4a8u"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtt0hpq8wd37p" path="res://assets/cuerda/medio_cuerda.png" id="8_nf74t"]
 [ext_resource type="PackedScene" uid="uid://cyu1bpvwwjhgy" path="res://scenes/gameplay/trampoline/map.tscn" id="11_wuw5i"]
 [ext_resource type="Texture2D" uid="uid://byken0ipxg6jc" path="res://assets/montana3.png" id="12_ux224"]
+[ext_resource type="Script" path="res://scenes/gameplay/game_finish+.gd" id="12_wvmty"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnr8y"]
 radius = 32.0
@@ -20,6 +21,9 @@ size = Vector2(64, 64)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_j5mx2"]
 b = Vector2(600, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnds3"]
+size = Vector2(600, 100)
 
 [node name="Main" type="Node2D"]
 
@@ -100,3 +104,15 @@ texture_mode = 1
 script = ExtResource("2_mp23v")
 
 [node name="Map" parent="." instance=ExtResource("11_wuw5i")]
+
+[node name="GameFinish" type="Node2D" parent="."]
+position = Vector2(0, -500)
+script = ExtResource("12_wvmty")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GameFinish" groups=["game_finish_floor"]]
+position = Vector2(-300, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameFinish/StaticBody2D"]
+shape = SubResource("RectangleShape2D_fnds3")
+
+[connection signal="game_finished" from="GameFinish" to="TrampolineManager" method="_on_game_finish_game_finished"]
