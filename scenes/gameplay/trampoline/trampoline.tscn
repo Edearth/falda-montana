@@ -13,7 +13,7 @@ script = ExtResource("1_aj7n4")
 shape = SubResource("SegmentShape2D_qiy1v")
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0)
 width = 30.0
 texture = ExtResource("2_gyd6a")
 texture_mode = 1
