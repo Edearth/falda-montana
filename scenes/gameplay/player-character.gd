@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var gravity: float = 75
-@export var max_bounce: float = 2
-@export var min_bounce: float = 1
+@export var max_bounce: float = 1.6
+@export var min_bounce: float = 0.9
 var speed: float = 10
 
 func _physics_process(delta):

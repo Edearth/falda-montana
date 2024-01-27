@@ -19,8 +19,6 @@ size = Vector2(64, 64)
 position = Vector2(300, 300)
 collision_mask = 3
 script = ExtResource("1_x4a8u")
-max_bounce = 1.6
-min_bounce = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
 shape = SubResource("CircleShape2D_bnr8y")
