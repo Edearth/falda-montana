@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=20 format=3 uid="uid://iaq32s2ve124"]
 
+[ext_resource type="Script" path="res://scenes/gameplay/rock/rock_manager.gd" id="1_023ww"]
 [ext_resource type="Script" path="res://scenes/gameplay/bottom_floor.gd" id="1_id8xs"]
 [ext_resource type="Script" path="res://scenes/gameplay/player-character.gd" id="1_x4a8u"]
 [ext_resource type="Script" path="res://scenes/gameplay/rope_bounce_animation.gd" id="2_mp23v"]
@@ -9,9 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bveq7w6bpd8l6" path="res://assets/square.svg" id="4_iy44v"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="5_h12vd"]
 [ext_resource type="Texture2D" uid="uid://dtt0hpq8wd37p" path="res://assets/cuerda/medio_cuerda.png" id="8_nf74t"]
-[ext_resource type="PackedScene" uid="uid://cyu1bpvwwjhgy" path="res://scenes/gameplay/trampoline/map.tscn" id="11_wuw5i"]
+[ext_resource type="PackedScene" uid="uid://dcgm675xw4oul" path="res://scenes/gameplay/rock_spawner.tscn" id="8_w2p7d"]
+[ext_resource type="PackedScene" path="res://scenes/gameplay/trampoline/map.tscn" id="11_wuw5i"]
 [ext_resource type="Texture2D" uid="uid://byken0ipxg6jc" path="res://assets/montana3.png" id="12_ux224"]
-[ext_resource type="Script" path="res://scenes/gameplay/game_finish+.gd" id="12_wvmty"]
+[ext_resource type="Script" path="res://scenes/gameplay/game_finish.gd" id="12_wvmty"]
+[ext_resource type="PackedScene" uid="uid://dd2homxrf853x" path="res://scenes/gameplay/detect_player.tscn" id="14_shnt8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnr8y"]
 radius = 32.0
@@ -27,9 +30,13 @@ size = Vector2(600, 100)
 
 [node name="Main" type="Node2D"]
 
-[node name="PlayerCharacter" type="CharacterBody2D" parent="."]
+[node name="RockManager" type="Node2D" parent="."]
+script = ExtResource("1_023ww")
+
+[node name="PlayerCharacter" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(300, 300)
-collision_mask = 3
+collision_layer = 3
+collision_mask = 11
 floor_stop_on_slope = false
 script = ExtResource("1_x4a8u")
 max_bounce = 2.0
@@ -78,11 +85,7 @@ shape = SubResource("RectangleShape2D_8jgpq")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_iy44v")
 
-[node name="RockSpawn" type="Area2D" parent="Camera2D"]
-position = Vector2(-300, -400)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/RockSpawn"]
-shape = SubResource("RectangleShape2D_7ch2b")
+[node name="RockSpawner" parent="Camera2D" instance=ExtResource("8_w2p7d")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -120,5 +123,10 @@ position = Vector2(-300, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameFinish/StaticBody2D"]
 shape = SubResource("RectangleShape2D_fnds3")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="DetectPlayer" parent="." instance=ExtResource("14_shnt8")]
+position = Vector2(278, -97)
 
 [connection signal="game_finished" from="GameFinish" to="TrampolineManager" method="_on_game_finish_game_finished"]
+[connection signal="on_player_entered" from="DetectPlayer" to="Camera2D/RockSpawner" method="start"]

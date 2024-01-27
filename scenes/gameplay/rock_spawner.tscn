@@ -14,6 +14,6 @@ position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_7ch2b")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
