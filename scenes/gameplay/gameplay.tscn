@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=8 format=3 uid="uid://iaq32s2ve124"]
 
 [ext_resource type="Texture2D" uid="uid://dds1sdaxddjq" path="res://assets/circle.svg" id="1_7avmq"]
+[ext_resource type="Script" path="res://scenes/gameplay/reset.gd" id="1_u3yr4"]
 [ext_resource type="Script" path="res://scenes/gameplay/player-character.gd" id="1_x4a8u"]
 [ext_resource type="Script" path="res://scenes/gameplay/trampoline/trampoline-manager.gd" id="2_x7po0"]
 [ext_resource type="Texture2D" uid="uid://bveq7w6bpd8l6" path="res://assets/square.svg" id="4_iy44v"]
@@ -12,10 +13,13 @@ radius = 32.0
 size = Vector2(64, 64)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_u3yr4")
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="."]
-position = Vector2(174, 97)
+position = Vector2(288, -468)
 script = ExtResource("1_x4a8u")
+max_bounce = 1.6
+min_bounce = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
 shape = SubResource("CircleShape2D_bnr8y")
