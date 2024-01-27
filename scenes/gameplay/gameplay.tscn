@@ -32,29 +32,30 @@ texture = ExtResource("1_7avmq")
 [node name="TrampolineManager" type="Node2D" parent="."]
 script = ExtResource("2_x7po0")
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
-scale = Vector2(1, 50)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
-shape = SubResource("RectangleShape2D_8jgpq")
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_iy44v")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
-position = Vector2(600, 0)
-scale = Vector2(1, 50)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
-shape = SubResource("RectangleShape2D_8jgpq")
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D2"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_iy44v")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 400)
 script = ExtResource("5_h12vd")
+
+[node name="SideBorders" type="Node2D" parent="Camera2D"]
+position = Vector2(-300, -400)
+
+[node name="SideBorderLeft" type="StaticBody2D" parent="Camera2D/SideBorders"]
+scale = Vector2(1, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/SideBorders/SideBorderLeft"]
+shape = SubResource("RectangleShape2D_8jgpq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/SideBorders/SideBorderLeft"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_iy44v")
+
+[node name="SideBorderRight" type="StaticBody2D" parent="Camera2D/SideBorders"]
+position = Vector2(600, 0)
+scale = Vector2(1, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/SideBorders/SideBorderRight"]
+shape = SubResource("RectangleShape2D_8jgpq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/SideBorders/SideBorderRight"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_iy44v")
