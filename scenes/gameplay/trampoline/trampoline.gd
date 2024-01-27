@@ -15,6 +15,7 @@ func _process(delta):
 func update_shape(position: Vector2):
 	collision_shape_2d.shape.set_b(position)
 	line_2d.points[1] = position
+	$Sprite2D2.position = position
 
 func stop_editing():
 	is_editing = false
