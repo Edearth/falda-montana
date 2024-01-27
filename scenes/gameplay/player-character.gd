@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var gravity: float = 75
 @export var max_bounce: float = 1.6
 @export var min_bounce: float = 0.9
+
 var speed: float = 10
 
 func _physics_process(delta):
@@ -14,7 +15,11 @@ func _physics_process(delta):
 		if (collision.get_collider() as Node).is_in_group("walls"):
 			lerped_bounce = .5
 		velocity = velocity.bounce(collision.get_normal()) * lerped_bounce
-		
-			
+		update_sprites()
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit()
+	if velocity.y > 0:
+		$Sprite2D.set_fall_sprite(velocity.y)
+
+func update_sprites():
+	$Sprite2D.update_sprites()

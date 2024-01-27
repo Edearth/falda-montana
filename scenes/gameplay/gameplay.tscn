@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=10 format=3 uid="uid://iaq32s2ve124"]
 
-[ext_resource type="Texture2D" uid="uid://dds1sdaxddjq" path="res://assets/circle.svg" id="1_7avmq"]
 [ext_resource type="Script" path="res://scenes/gameplay/player-character.gd" id="1_x4a8u"]
+[ext_resource type="Texture2D" uid="uid://bakad7fcpo673" path="res://assets/zarigueya/main_salto.png" id="2_qlemm"]
 [ext_resource type="Script" path="res://scenes/gameplay/trampoline/trampoline-manager.gd" id="2_x7po0"]
+[ext_resource type="Script" path="res://scenes/gameplay/player-character-sprite.gd" id="3_ljvf3"]
 [ext_resource type="Texture2D" uid="uid://bveq7w6bpd8l6" path="res://assets/square.svg" id="4_iy44v"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="5_h12vd"]
-[ext_resource type="Texture2D" path="res://assets/montana_copia.png" id="6_qj1ac"]
+[ext_resource type="Texture2D" uid="uid://4t2xpu4lowg7" path="res://assets/montana_copia.png" id="6_qj1ac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnr8y"]
 radius = 32.0
@@ -19,14 +20,15 @@ size = Vector2(64, 64)
 position = Vector2(300, 300)
 collision_mask = 3
 script = ExtResource("1_x4a8u")
+max_bounce = 2.0
+min_bounce = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
 shape = SubResource("CircleShape2D_bnr8y")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerCharacter"]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_7avmq")
+texture = ExtResource("2_qlemm")
+script = ExtResource("3_ljvf3")
 
 [node name="TrampolineManager" type="Node2D" parent="."]
 script = ExtResource("2_x7po0")
@@ -68,4 +70,6 @@ position = Vector2(345, -47)
 motion_scale = Vector2(0.165, 0.165)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(-32, 215)
 texture = ExtResource("6_qj1ac")
