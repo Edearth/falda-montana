@@ -24,7 +24,7 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision.get_normal()) * lerped_bounce
 		update_sprites()
 		if collision.get_collider().has_method("hit"):
-			collision.get_collider().hit(position)
+			collision.get_collider().hit(position, collision.get_normal())
 		
 	if velocity.y > 0:
 		$Sprite2D.set_fall_sprite(velocity.y)
