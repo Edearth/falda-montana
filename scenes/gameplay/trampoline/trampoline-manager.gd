@@ -10,4 +10,5 @@ func _input(event):
 			get_tree().root.add_child(current_trampoline)
 			current_trampoline.position = get_global_mouse_position()
 		else:
-			current_trampoline.stop_editing()
+			if current_trampoline != null:
+				current_trampoline.stop_editing()

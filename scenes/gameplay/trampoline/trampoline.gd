@@ -18,3 +18,6 @@ func update_shape(position: Vector2):
 
 func stop_editing():
 	is_editing = false
+
+func hit():
+	queue_free()
