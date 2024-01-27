@@ -18,6 +18,7 @@ script = ExtResource("1_u3yr4")
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="."]
 position = Vector2(300, 300)
+collision_mask = 3
 script = ExtResource("1_x4a8u")
 max_bounce = 1.6
 min_bounce = 0.9
@@ -39,8 +40,9 @@ script = ExtResource("5_h12vd")
 [node name="SideBorders" type="Node2D" parent="Camera2D"]
 position = Vector2(-300, -400)
 
-[node name="SideBorderLeft" type="StaticBody2D" parent="Camera2D/SideBorders"]
+[node name="SideBorderLeft" type="StaticBody2D" parent="Camera2D/SideBorders" groups=["walls"]]
 scale = Vector2(1, 50)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/SideBorders/SideBorderLeft"]
 shape = SubResource("RectangleShape2D_8jgpq")
@@ -49,9 +51,10 @@ shape = SubResource("RectangleShape2D_8jgpq")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_iy44v")
 
-[node name="SideBorderRight" type="StaticBody2D" parent="Camera2D/SideBorders"]
+[node name="SideBorderRight" type="StaticBody2D" parent="Camera2D/SideBorders" groups=["walls"]]
 position = Vector2(600, 0)
 scale = Vector2(1, 50)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/SideBorders/SideBorderRight"]
 shape = SubResource("RectangleShape2D_8jgpq")
