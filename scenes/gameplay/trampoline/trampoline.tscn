@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bop0rlanl0dl"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/trampoline/trampoline.gd" id="1_aj7n4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qiy1v"]
+
+[node name="Trampoline" type="StaticBody2D"]
+script = ExtResource("1_aj7n4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_qiy1v")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
