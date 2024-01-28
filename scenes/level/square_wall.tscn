@@ -11,4 +11,5 @@ size = Vector2(128, 128)
 shape = SubResource("RectangleShape2D_sgn77")
 
 [node name="SquareWal" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_4v8j5")
