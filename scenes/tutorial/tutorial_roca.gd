@@ -5,12 +5,14 @@ var tutorial_started: bool = false
 var time_stopped: bool = false
 var rock: RigidBody2D
 @onready var rock_scene: PackedScene = load("res://scenes/gameplay/rock/rock.tscn")
-@onready var rock_spawn_position: Marker2D = $RockSpawnPosition
+@export var rock_spawn_position: Marker2D
 
 func _on_player_entered():
 	if not tutorial_started:
 		tutorial_started = true
 		rock = rock_scene.instantiate()
+		rock.TIME_TO_START_FALLING = 0 #freeze = false
+		#rock.do_launch_rock()
 		rock.rock_destroyed.connect(_on_rock_destroyed)
 		rock_spawn_position.call_deferred("add_child",rock)
 

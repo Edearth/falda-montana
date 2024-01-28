@@ -16,6 +16,7 @@ func _ready():
 	warning.finished.connect(warning.queue_free)
 
 func do_launch_rock():
+	reparent(Global.rock_manager)
 	set_freeze_enabled(false)
 	rock_starts_falling.emit()
 

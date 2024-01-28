@@ -27,7 +27,7 @@ max_contacts_reported = 4
 contact_monitor = true
 linear_velocity = Vector2(0, 30)
 script = ExtResource("1_js7mc")
-TIME_TO_START_FALLING = 1.0
+TIME_TO_START_FALLING = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gafgp")
