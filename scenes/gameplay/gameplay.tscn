@@ -86,7 +86,6 @@ texture = ExtResource("2_qlemm")
 script = ExtResource("3_ljvf3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerCharacter"]
-volume_db = -5.0
 
 [node name="GameFinish" type="Node2D" parent="."]
 position = Vector2(-6, -5687)
