@@ -31,6 +31,8 @@ func _physics_process(delta):
 		if (collision.get_collider() as Node).is_in_group("walls"):
 			is_trampoline = false
 			lerped_bounce = .5 
+			
+		handle_bush_collision(collision.get_collider())
 		
 		if is_trampoline:
 			Global.player_bounced_on_trampoline.emit()
@@ -42,6 +44,12 @@ func _physics_process(delta):
 		
 	if velocity.y > 0:
 		$Sprite2D.set_fall_sprite(velocity.y)
+
+func handle_bush_collision(collided_node: Node):
+	if collided_node.is_in_group("bushes"):
+		if collided_node.has_method("hit_bush"):
+			collided_node.hit(null, null) #not needed
+	
 
 func update_sprites():
 	$Sprite2D.update_sprites()

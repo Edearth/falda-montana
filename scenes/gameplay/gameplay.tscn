@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=27 format=3 uid="uid://iaq32s2ve124"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/rock/rock_manager.gd" id="1_023ww"]
 [ext_resource type="Script" path="res://scenes/gameplay/bottom_floor.gd" id="1_id8xs"]
@@ -17,8 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://dd2homxrf853x" path="res://scenes/gameplay/detect_player.tscn" id="14_shnt8"]
 [ext_resource type="Script" path="res://scenes/gameplay/dialogue_meneger.gd" id="15_3cmk4"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/trampoline/joke.tscn" id="17_w0pda"]
-[ext_resource type="PackedScene" uid="uid://cpg23ujxwcqtl" path="res://scenes/tutorial/tutorial_movimiento.tscn" id="18_xy6pn"]
-[ext_resource type="PackedScene" uid="uid://g6i6xqvaxk81" path="res://scenes/gameplay/rock/rock.tscn" id="19_plu6d"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial_movimiento.gd" id="18_bxi7s"]
+[ext_resource type="PackedScene" uid="uid://uijxw3520kld" path="res://scenes/gameplay/bushes/bush_manager.tscn" id="18_kakpp"]
+[ext_resource type="PackedScene" uid="uid://spf8e1t04aev" path="res://scenes/tutorial/draw_line_graphic.tscn" id="19_brn3d"]
+[ext_resource type="PackedScene" uid="uid://dkng6ffmfdfvj" path="res://scenes/gameplay/bushes/bush.tscn" id="19_ownqs"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial_roca.gd" id="20_8urup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnr8y"]
 radius = 32.0
@@ -38,7 +41,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_023ww")
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(300, 300)
+position = Vector2(311, 376)
 collision_layer = 3
 collision_mask = 11
 floor_stop_on_slope = false
@@ -94,7 +97,7 @@ shape = SubResource("RectangleShape2D_fnds3")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="DetectPlayer" parent="." instance=ExtResource("14_shnt8")]
-position = Vector2(278, -97)
+position = Vector2(278, -2283)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 400)
@@ -155,19 +158,41 @@ text = "Text"
 [node name="Joke" parent="." instance=ExtResource("17_w0pda")]
 position = Vector2(304, 522)
 
+[node name="BushManager" parent="." instance=ExtResource("18_kakpp")]
+
+[node name="Bush" parent="BushManager" instance=ExtResource("19_ownqs")]
+
+[node name="Bush2" parent="BushManager" instance=ExtResource("19_ownqs")]
+position = Vector2(52, -26)
+
+[node name="Bush3" parent="BushManager" instance=ExtResource("19_ownqs")]
+position = Vector2(-52, 18)
+
 [node name="Tutorial" type="Node" parent="."]
 
-[node name="Movimiento" parent="Tutorial" instance=ExtResource("18_xy6pn")]
+[node name="Movimiento" type="Node2D" parent="Tutorial"]
+script = ExtResource("18_bxi7s")
 
-[node name="Roca" type="Node2D" parent="Tutorial"]
-visible = false
+[node name="DrawLineGraphic" parent="Tutorial/Movimiento" instance=ExtResource("19_brn3d")]
+position = Vector2(219, 518)
+
+[node name="Roca" type="Node2D" parent="Tutorial" node_paths=PackedStringArray("player")]
+script = ExtResource("20_8urup")
+player = NodePath("../../PlayerCharacter")
 
 [node name="Trigger" parent="Tutorial/Roca" instance=ExtResource("14_shnt8")]
-position = Vector2(278, -97)
+position = Vector2(364, -656)
+scale = Vector2(-1.03301, 0.256824)
 
-[node name="Rock" parent="Tutorial/Roca" instance=ExtResource("19_plu6d")]
+[node name="DrawLineGraphic" parent="Tutorial/Roca" instance=ExtResource("19_brn3d")]
+position = Vector2(-471, -7)
+
+[node name="Node2D" type="Node2D" parent="Tutorial/Roca"]
+
+[node name="RockSpawnPosition" type="Marker2D" parent="Tutorial/Roca"]
+position = Vector2(498, -1046)
 
 [connection signal="game_finished" from="GameFinish" to="TrampolineManager" method="_on_game_finish_game_finished"]
 [connection signal="game_finished" from="GameFinish" to="Camera2D/DialogueManager" method="_on_game_finish_game_finished"]
 [connection signal="on_player_entered" from="DetectPlayer" to="Camera2D/RockSpawner" method="start"]
-[connection signal="on_player_entered" from="Tutorial/Roca/Trigger" to="Camera2D/RockSpawner" method="start"]
+[connection signal="on_player_entered" from="Tutorial/Roca/Trigger" to="Tutorial/Roca" method="_on_player_entered"]

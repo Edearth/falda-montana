@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpg23ujxwcqtl"]
+[gd_scene load_steps=6 format=3 uid="uid://spf8e1t04aev"]
 
-[ext_resource type="Script" path="res://scenes/tutorial/tutorial_movimiento.gd" id="1_rtg3u"]
-[ext_resource type="Texture2D" uid="uid://4d1odi00mqn7" path="res://assets/pointer.svg" id="1_ylin2"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial_draw_line_controller.gd" id="1_gma8m"]
+[ext_resource type="Texture2D" uid="uid://4d1odi00mqn7" path="res://assets/pointer.svg" id="2_c465k"]
 
 [sub_resource type="Animation" id="Animation_5e3en"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pointer:position")
+tracks/0/path = NodePath("DrawLineGraphic/AnimationPlayer/Pointer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,7 +20,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Pointer:modulate")
+tracks/1/path = NodePath("DrawLineGraphic/AnimationPlayer/Pointer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -32,7 +32,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Line2D:points")
+tracks/2/path = NodePath("DrawLineGraphic/AnimationPlayer/Line2D:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -49,7 +49,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pointer:position")
+tracks/0/path = NodePath("DrawLineGraphic/Pointer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -61,7 +61,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Pointer:modulate")
+tracks/1/path = NodePath("DrawLineGraphic/Pointer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -73,7 +73,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Line2D:points")
+tracks/2/path = NodePath("DrawLineGraphic/Line2D:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -89,19 +89,22 @@ _data = {
 "loop_draw_line": SubResource("Animation_dsx36")
 }
 
-[node name="Movimiento" type="Node2D"]
-position = Vector2(204, 572)
-script = ExtResource("1_rtg3u")
+[node name="DrawLineGraphic" type="Node2D"]
+script = ExtResource("1_gma8m")
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 0, 0)
+z_index = 105
+points = PackedVector2Array(0, 0, 70.3234, 0)
 default_color = Color(1, 0, 0, 0.654902)
 
 [node name="Pointer" type="Sprite2D" parent="."]
-texture = ExtResource("1_ylin2")
+z_index = 110
+position = Vector2(70.3234, 0)
+texture = ExtResource("2_c465k")
 offset = Vector2(30, 30)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_56ngr")
 }

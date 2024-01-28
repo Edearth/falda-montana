@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkng6ffmfdfvj"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/bushes/bush_controller.gd" id="1_tttle"]
+[ext_resource type="Texture2D" uid="uid://dds1sdaxddjq" path="res://assets/circle.svg" id="2_hfgpl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbnvt"]
+radius = 32.0
+
+[node name="Bush" type="StaticBody2D"]
+script = ExtResource("1_tttle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["bushes"]]
+shape = SubResource("CircleShape2D_qbnvt")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hfgpl")

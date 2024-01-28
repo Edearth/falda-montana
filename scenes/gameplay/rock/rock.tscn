@@ -19,7 +19,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 offsets = PackedFloat32Array(0, 0.211268, 0.805634, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
-[node name="Rock" type="RigidBody2D"]
+[node name="Rock" type="RigidBody2D" groups=["rock"]]
 collision_layer = 4
 collision_mask = 4
 max_contacts_reported = 4
