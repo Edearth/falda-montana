@@ -24,6 +24,9 @@ func _on_rock_destroyed():
 
 func _process(_delta):
 	if not time_stopped and rock != null and is_instance_valid(rock):
+		if rock.position.y > 1000:
+			rock.queue_free()
+			_on_rock_destroyed()
 		if player.global_position.y - rock.global_position.y <= 150:
 			time_stopped = true
 			show_tutorial()
