@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bw22b8kywtlrv" path="res://assets/rat-tilemap.svg" id="1_hr2qp"]
 [ext_resource type="PackedScene" uid="uid://dniap3b8cq0d1" path="res://scenes/level/square_wall.tscn" id="1_uidw3"]
-[ext_resource type="Texture2D" uid="uid://dippkymngqml7" path="res://assets/tileset/tileset.png" id="2_7ehik"]
+[ext_resource type="Texture2D" uid="uid://dippkymngqml7" path="res://assets/tileset.png" id="2_7ehik"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hpqmu"]
 friction = 0.0

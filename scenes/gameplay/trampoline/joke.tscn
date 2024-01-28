@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpucibn4og47f"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/joke.gd" id="1_qfnt6"]
+[ext_resource type="Texture2D" path="res://assets/chiste.png" id="2_3a6dt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5ufa"]
+radius = 64.0
+
+[sub_resource type="Animation" id="Animation_p55sw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aok58"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kf0qm"]
+_data = {
+"RESET": SubResource("Animation_p55sw"),
+"idle": SubResource("Animation_aok58")
+}
+
+[node name="Joke" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_qfnt6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_3a6dt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_m5ufa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+libraries = {
+"": SubResource("AnimationLibrary_kf0qm")
+}
+autoplay = "idle"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -2,6 +2,7 @@ extends Node
 
 var rock_manager: Node
 
+var jokes_collected: int = 0
 
 # SHAKE NODES
 const _shake_level: float = 30
