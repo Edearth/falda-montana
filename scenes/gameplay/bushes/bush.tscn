@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dkng6ffmfdfvj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/bushes/bush_controller.gd" id="1_tttle"]
-[ext_resource type="Texture2D" uid="uid://whijp5dsxxa2" path="res://assets/arbusto/01_arbusto.png" id="2_nbxbh"]
+[ext_resource type="Texture2D" uid="uid://cxq3n35ol6r6h" path="res://assets/arbusto/01_arbusto.png" id="2_nbxbh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbnvt"]
 radius = 32.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=25 format=3 uid="uid://iaq32s2ve124"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/rock/rock_manager.gd" id="1_023ww"]
 [ext_resource type="Script" path="res://scenes/gameplay/bottom_floor.gd" id="1_id8xs"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cwvjgieuiww77" path="res://scenes/gameplay/trampoline/map.tscn" id="11_wuw5i"]
 [ext_resource type="Script" path="res://scenes/gameplay/game_finish.gd" id="12_wvmty"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/detect_player.tscn" id="14_shnt8"]
-[ext_resource type="PackedScene" uid="uid://dpucibn4og47f" path="res://scenes/gameplay/trampoline/joke.tscn" id="17_w0pda"]
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_movimiento.gd" id="18_bxi7s"]
 [ext_resource type="PackedScene" uid="uid://uijxw3520kld" path="res://scenes/gameplay/bushes/bush_manager.tscn" id="18_kakpp"]
 [ext_resource type="PackedScene" uid="uid://spf8e1t04aev" path="res://scenes/tutorial/draw_line_graphic.tscn" id="19_brn3d"]
@@ -45,7 +44,7 @@ collision_layer = 3
 collision_mask = 11
 floor_stop_on_slope = false
 script = ExtResource("1_x4a8u")
-max_bounce = 2.0
+max_bounce = 2.4
 min_bounce = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
@@ -86,7 +85,7 @@ script = ExtResource("2_mp23v")
 [node name="Map" parent="." instance=ExtResource("11_wuw5i")]
 
 [node name="GameFinish" type="Node2D" parent="."]
-position = Vector2(0, -5054)
+position = Vector2(-6, -5687)
 script = ExtResource("12_wvmty")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="GameFinish" groups=["game_finish_floor"]]
@@ -102,7 +101,13 @@ scale = Vector2(50, 50)
 texture = ExtResource("4_iy44v")
 
 [node name="DetectPlayer" parent="." instance=ExtResource("14_shnt8")]
-position = Vector2(278, -2283)
+position = Vector2(311, -705)
+
+[node name="DetectPlayer3" parent="." instance=ExtResource("14_shnt8")]
+position = Vector2(311, -4166)
+
+[node name="DetectPlayer2" parent="." instance=ExtResource("14_shnt8")]
+position = Vector2(311, -3309)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 400)
@@ -138,9 +143,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_iy44v")
 
 [node name="RockSpawner" parent="Camera2D" instance=ExtResource("8_w2p7d")]
-
-[node name="Joke" parent="." instance=ExtResource("17_w0pda")]
-position = Vector2(304, 522)
+position = Vector2(-8, -993)
 
 [node name="BushManager" parent="." instance=ExtResource("18_kakpp")]
 position = Vector2(235, -1666)
@@ -165,11 +168,12 @@ script = ExtResource("18_bxi7s")
 position = Vector2(219, 518)
 
 [node name="Roca" type="Node2D" parent="Tutorial" node_paths=PackedStringArray("player")]
+position = Vector2(-77, 835)
 script = ExtResource("20_8urup")
 player = NodePath("../../PlayerCharacter")
 
 [node name="Trigger" parent="Tutorial/Roca" instance=ExtResource("14_shnt8")]
-position = Vector2(364, -656)
+position = Vector2(363, -617)
 scale = Vector2(-1.03301, 0.256824)
 
 [node name="DrawLineGraphic" parent="Tutorial/Roca" instance=ExtResource("19_brn3d")]
@@ -178,8 +182,10 @@ position = Vector2(-471, -7)
 [node name="Node2D" type="Node2D" parent="Tutorial/Roca"]
 
 [node name="RockSpawnPosition" type="Marker2D" parent="Tutorial/Roca"]
-position = Vector2(498, -1046)
+position = Vector2(371, -1166)
 
 [connection signal="game_finished" from="GameFinish" to="TrampolineManager" method="_on_game_finish_game_finished"]
 [connection signal="on_player_entered" from="DetectPlayer" to="Camera2D/RockSpawner" method="start"]
+[connection signal="on_player_entered" from="DetectPlayer3" to="Camera2D/RockSpawner" method="start"]
+[connection signal="on_player_entered" from="DetectPlayer2" to="Camera2D/RockSpawner" method="stop"]
 [connection signal="on_player_entered" from="Tutorial/Roca/Trigger" to="Tutorial/Roca" method="_on_player_entered"]
