@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvexe220fuphh"]
+[gd_scene load_steps=25 format=3 uid="uid://dvexe220fuphh"]
 
 [ext_resource type="Texture2D" uid="uid://xaabmjnc8rrv" path="res://assets/final_cinematic/cielo_final.png" id="1_xi1ml"]
 [ext_resource type="Texture2D" uid="uid://brnqolrps5hqs" path="res://assets/final_cinematic/montana_final.png" id="2_ixcqw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://eg7q4rshsjts" path="res://assets/final_cinematic/risa_montana_final_1.png" id="5_na281"]
 [ext_resource type="Texture2D" uid="uid://bd4afi7u3cevr" path="res://assets/final_cinematic/risa_montana_final_2.png" id="6_aiw3e"]
 [ext_resource type="Texture2D" uid="uid://bsa32mec5tk5b" path="res://assets/bocadillo_final.png" id="6_m4y2h"]
+[ext_resource type="AudioStream" uid="uid://wvhako435vnt" path="res://assets/audio/lloro-montana.ogg" id="11_pf534"]
 
 [sub_resource type="Animation" id="Animation_mp60b"]
 length = 0.001
@@ -273,3 +274,8 @@ libraries = {
 autoplay = "transition"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MountainStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pf534")
+volume_db = -5.0
+autoplay = true

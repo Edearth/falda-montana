@@ -47,15 +47,22 @@ func _input(event):
 			$RatText.text = DIALOGUES[1]
 		elif max_jokes > jokes_index:
 			if jokes_index > 2:
-				$"../Sprites/Sprite2D2/AnimationPlayer".play("laugh")
+				laugh()
 			else:
 				$"../Sprites/Sprite2D2/AnimationPlayer".play("idle")
+				$"../MountainStreamPlayer".stop()
 			jokes_used = jokes.duplicate()
 			jokes.shuffle()
 			var current_joke = jokes.pop_front()
 			print(current_joke)
 			$RatText.text = current_joke
 		else:
-			$"../Sprites/Sprite2D2/AnimationPlayer".play("laugh")
+			laugh()
+			
 			$RatText.text = "He encontrado [b]" + str(Global.jokes_collected) \
 				+ " chistecitoh[/b], espero que te hayan gustado gatita!!"
+
+func laugh():
+	$"../Sprites/Sprite2D2/AnimationPlayer".play("laugh")
+	$"../MountainStreamPlayer".stream = load("res://assets/audio/risa-montana.ogg")
+	$"../MountainStreamPlayer".play()
