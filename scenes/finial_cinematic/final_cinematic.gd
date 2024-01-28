@@ -38,7 +38,7 @@ func play_talk_sound():
 func _input(event):
 	if jokes_index != -1 \
 		and event is InputEventMouseButton and event.pressed:
-			
+		
 		play_talk_sound()
 		
 		jokes_index += 1
@@ -46,13 +46,16 @@ func _input(event):
 		if jokes_index == 1:
 			$RatText.text = DIALOGUES[1]
 		elif max_jokes > jokes_index:
-			$"../Sprites/Sprite2D2/AnimationPlayer".play("idle")
+			if jokes_index > 2:
+				$"../Sprites/Sprite2D2/AnimationPlayer".play("laugh")
+			else:
+				$"../Sprites/Sprite2D2/AnimationPlayer".play("idle")
 			jokes_used = jokes.duplicate()
 			jokes.shuffle()
 			var current_joke = jokes.pop_front()
 			print(current_joke)
 			$RatText.text = current_joke
 		else:
-			$"../Sprites/Sprite2D2/AnimationPlayer".play("idle")
+			$"../Sprites/Sprite2D2/AnimationPlayer".play("laugh")
 			$RatText.text = "He encontrado [b]" + str(Global.jokes_collected) \
 				+ " chistecitoh[/b], espero que te hayan gustado gatita!!"

@@ -4,7 +4,7 @@ signal player_bounced_on_trampoline
 
 var rock_manager: Node
 
-var jokes_collected: int = 0
+var jokes_collected: int = 2
 
 # SHAKE NODES
 const _shake_level: float = 30
