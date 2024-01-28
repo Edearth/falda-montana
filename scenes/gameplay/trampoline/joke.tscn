@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpucibn4og47f"]
+[gd_scene load_steps=9 format=3 uid="uid://dpucibn4og47f"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/joke.gd" id="1_qfnt6"]
 [ext_resource type="Texture2D" uid="uid://2xkvh2k2g4cy" path="res://assets/chiste.png" id="2_3a6dt"]
+
+[sub_resource type="Curve" id="Curve_4wmw3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.26944, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m5ufa"]
 radius = 64.0
@@ -20,6 +24,28 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_aok58"]
 resource_name = "idle"
@@ -37,15 +63,60 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_e5mx0"]
+resource_name = "pickup"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.1, 1.43297, 0.225143, -0.05, -0.265604, 0.05, 0.298804, 0, -0.074, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.449246, -0.25, 0, 0.1, -0.683556, 0.582048, -0.075, 1.11222, 0.025, -0.381805, 0, -0.1, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.175, 0.3)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kf0qm"]
 _data = {
 "RESET": SubResource("Animation_p55sw"),
-"idle": SubResource("Animation_aok58")
+"idle": SubResource("Animation_aok58"),
+"pickup": SubResource("Animation_e5mx0")
 }
 
 [node name="Joke" type="Node2D"]
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_qfnt6")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(1, 1)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("2_3a6dt")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = 2.2
+angular_velocity_max = 171.21
+scale_amount_min = 0.3
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_4wmw3")
+color = Color(0.576471, 0.458824, 0.32549, 1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_3a6dt")
