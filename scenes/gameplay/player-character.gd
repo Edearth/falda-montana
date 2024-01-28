@@ -4,6 +4,15 @@ extends CharacterBody2D
 @export var max_bounce: float = 1.6
 @export var min_bounce: float = 0.9
 
+const SOUNDS = [
+	"res://assets/audio/wa.ogg", 
+	"res://assets/audio/wa_2.ogg", 
+	"res://assets/audio/wa_3.ogg",
+	"res://assets/audio/wa_4.ogg", 
+	"res://assets/audio/wa_5.ogg", 
+	"res://assets/audio/wa_6.ogg"
+]
+
 var speed: float = 10
 
 func _physics_process(delta):
@@ -17,6 +26,10 @@ func _physics_process(delta):
 			return
 		var bounce_magnitude = velocity.bounce(collision.get_normal()).length()
 		var lerped_bounce = lerpf(max_bounce, min_bounce, bounce_magnitude / 100)
+		
+		var audio_clip = SOUNDS.pick_random()
+		$AudioStreamPlayer.stream = load(audio_clip)
+		$AudioStreamPlayer.play()
 		
 		# TODO: extract to func handle_bottom_floor_collision(...)
 		if (collision.get_collider() as Node).is_in_group("bottom_floor"):

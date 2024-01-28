@@ -8,21 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://d3wm2ydmoqkky" path="res://assets/final_cinematic/llorar_montana_final_2.png" id="4_sl3em"]
 [ext_resource type="Texture2D" uid="uid://bveq7w6bpd8l6" path="res://assets/square.svg" id="5_n8pgo"]
 
-[sub_resource type="Animation" id="Animation_kyyk0"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_ixcqw")]
-}
-
 [sub_resource type="Animation" id="Animation_mp60b"]
 length = 0.001
 tracks/0/type = "value"
@@ -52,6 +37,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("3_ofjhy"), ExtResource("4_sl3em")]
+}
+
+[sub_resource type="Animation" id="Animation_kyyk0"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ixcqw")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a28bn"]

@@ -101,7 +101,6 @@ scale = Vector2(0.8, 0.8)
 script = ExtResource("1_qfnt6")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-scale = Vector2(1, 1)
 emitting = false
 lifetime = 0.5
 one_shot = true
