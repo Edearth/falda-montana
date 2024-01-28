@@ -1,5 +1,7 @@
 extends Node
 
+signal player_bounced_on_trampoline
+
 var rock_manager: Node
 
 var jokes_collected: int = 0
