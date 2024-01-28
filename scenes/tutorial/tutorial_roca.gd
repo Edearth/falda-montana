@@ -23,7 +23,7 @@ func _on_rock_destroyed():
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _process(_delta):
-	if not time_stopped and rock:
+	if not time_stopped and rock != null and is_instance_valid(rock):
 		if player.global_position.y - rock.global_position.y <= 150:
 			time_stopped = true
 			show_tutorial()
