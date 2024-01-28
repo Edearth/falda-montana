@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://g6i6xqvaxk81"]
+[gd_scene load_steps=9 format=3 uid="uid://g6i6xqvaxk81"]
 
-[ext_resource type="Texture2D" uid="uid://dds1sdaxddjq" path="res://assets/circle.svg" id="1_18x6o"]
 [ext_resource type="Script" path="res://scenes/gameplay/rock/rock_controller.gd" id="1_js7mc"]
 [ext_resource type="Script" path="res://scenes/gameplay/rock/rock_hit.gd" id="2_f6cby"]
+[ext_resource type="Texture2D" uid="uid://cl1k8wo3iwh5u" path="res://assets/roca/piedra.png" id="2_fbtd6"]
+[ext_resource type="Texture2D" uid="uid://d2yc6fv4bx7cm" path="res://assets/roca/particula_piedra.png" id="5_j36w2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gafgp"]
 radius = 65.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eggec"]
 radius = 43.0116
+
+[sub_resource type="Gradient" id="Gradient_50l15"]
+offsets = PackedFloat32Array(0, 0.0647887, 0.492958, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_5uui1"]
+offsets = PackedFloat32Array(0, 0.211268, 0.805634, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [node name="Rock" type="RigidBody2D"]
 collision_layer = 4
@@ -21,7 +30,7 @@ script = ExtResource("1_js7mc")
 shape = SubResource("CircleShape2D_gafgp")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("1_18x6o")
+texture = ExtResource("2_fbtd6")
 
 [node name="HitArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -30,5 +39,32 @@ script = ExtResource("2_f6cby")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource("CircleShape2D_eggec")
+
+[node name="WarningParticles" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("5_j36w2")
+emission_shape = 3
+emission_rect_extents = Vector2(64, 1)
+direction = Vector2(0, 1)
+spread = 2.5
+initial_velocity_min = 2000.0
+initial_velocity_max = 2000.0
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_50l15")
+
+[node name="TrailParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("5_j36w2")
+emission_shape = 3
+emission_rect_extents = Vector2(64, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_5uui1")
 
 [connection signal="body_entered" from="HitArea" to="HitArea" method="_on_body_entered"]
