@@ -17,25 +17,26 @@ var jokes = [
 var jokes_used = []
 var jokes_index := -1
 
+func _ready():
+	$RatText.text = ""
+	await get_tree().create_timer(2).timeout
+	jokes_index = 0
+	$RatText.text = DIALOGUES[0]
+
 func _input(event):
 	if jokes_index != -1 \
-		and event is InputEventMouseButton and event.pressed \
-		and get_node_or_null("Label") != null:
+		and event is InputEventMouseButton and event.pressed:
+		
 		jokes_index += 1
 		var max_jokes = Global.jokes_collected + 2
 		if jokes_index == 1:
-			$Label.text = DIALOGUES[1]
+			$RatText.text = DIALOGUES[1]
 		elif max_jokes > jokes_index:
 			jokes_used = jokes.duplicate()
 			jokes.shuffle()
 			var current_joke = jokes.pop_front()
 			print(current_joke)
-			$Label.text = current_joke
+			$RatText.text = current_joke
 		else:
-			$Label.text = "He encontrado " + str(Global.jokes_collected) \
-				+ " chistecito, espero que te hayan gustado gatita!!"
-
-func _on_game_finish_game_finished():
-	jokes_index = 0
-	visible = true
-	$Label.text = DIALOGUES[0]
+			$RatText.text = "He encontrado " + str(Global.jokes_collected) \
+				+ " chistecitoh, espero que te hayan gustado gatita!!"

@@ -1,0 +1,178 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvexe220fuphh"]
+
+[ext_resource type="Texture2D" uid="uid://xaabmjnc8rrv" path="res://assets/final_cinematic/cielo_final.png" id="1_xi1ml"]
+[ext_resource type="Texture2D" uid="uid://brnqolrps5hqs" path="res://assets/final_cinematic/montana_final.png" id="2_ixcqw"]
+[ext_resource type="Texture2D" uid="uid://ctlwiy2ggbun7" path="res://assets/final_cinematic/rata_final.png" id="3_ks4p6"]
+[ext_resource type="Script" path="res://scenes/finial_cinematic/final_cinematic.gd" id="4_hhglg"]
+[ext_resource type="Texture2D" uid="uid://bveq7w6bpd8l6" path="res://assets/square.svg" id="5_n8pgo"]
+
+[sub_resource type="Animation" id="Animation_pty7g"]
+resource_name = "start"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(330, 380), Vector2(270, 380)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(250, 400), Vector2(300, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_1hq7y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(330, 380)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(250, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8v30k"]
+_data = {
+"RESET": SubResource("Animation_1hq7y"),
+"start": SubResource("Animation_pty7g")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_234yr"]
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(1, 1, 1, 0.501961)
+shadow_size = 15
+
+[sub_resource type="Animation" id="Animation_r4fka"]
+resource_name = "transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nxomh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1id2"]
+_data = {
+"RESET": SubResource("Animation_nxomh"),
+"transition": SubResource("Animation_r4fka")
+}
+
+[node name="FinalCinematic" type="Node2D"]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+position = Vector2(300, 400)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xi1ml")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+position = Vector2(250, 400)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("2_ixcqw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+position = Vector2(330, 380)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_ks4p6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
+libraries = {
+"": SubResource("AnimationLibrary_8v30k")
+}
+autoplay = "start"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_hhglg")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 52.0
+offset_right = 567.0
+offset_bottom = 181.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_234yr")
+
+[node name="RatText" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 60.0
+offset_right = 553.0
+offset_bottom = 268.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "Hola que tal asdfasdfasd afsdf asdf asdf asdf asdf"
+
+[node name="Transition" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(300, 400)
+scale = Vector2(7, 7)
+texture = ExtResource("5_n8pgo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_r1id2")
+}
+autoplay = "transition"

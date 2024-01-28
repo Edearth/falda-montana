@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=26 format=3 uid="uid://iaq32s2ve124"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/rock/rock_manager.gd" id="1_023ww"]
 [ext_resource type="Script" path="res://scenes/gameplay/bottom_floor.gd" id="1_id8xs"]
@@ -10,13 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bveq7w6bpd8l6" path="res://assets/square.svg" id="4_iy44v"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="5_h12vd"]
 [ext_resource type="Texture2D" uid="uid://dtt0hpq8wd37p" path="res://assets/cuerda/medio_cuerda.png" id="8_nf74t"]
-[ext_resource type="PackedScene" uid="uid://dcgm675xw4oul" path="res://scenes/gameplay/rock_spawner.tscn" id="8_w2p7d"]
+[ext_resource type="PackedScene" path="res://scenes/gameplay/rock_spawner.tscn" id="8_w2p7d"]
 [ext_resource type="Texture2D" uid="uid://cym04to8josov" path="res://assets/fondo/fondo.png" id="9_kd73l"]
 [ext_resource type="PackedScene" uid="uid://cwvjgieuiww77" path="res://scenes/gameplay/trampoline/map.tscn" id="11_wuw5i"]
 [ext_resource type="Script" path="res://scenes/gameplay/game_finish.gd" id="12_wvmty"]
-[ext_resource type="PackedScene" uid="uid://dd2homxrf853x" path="res://scenes/gameplay/detect_player.tscn" id="14_shnt8"]
-[ext_resource type="Script" path="res://scenes/gameplay/dialogue_meneger.gd" id="15_3cmk4"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/trampoline/joke.tscn" id="17_w0pda"]
+[ext_resource type="PackedScene" path="res://scenes/gameplay/detect_player.tscn" id="14_shnt8"]
+[ext_resource type="PackedScene" uid="uid://dpucibn4og47f" path="res://scenes/gameplay/trampoline/joke.tscn" id="17_w0pda"]
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_movimiento.gd" id="18_bxi7s"]
 [ext_resource type="PackedScene" uid="uid://uijxw3520kld" path="res://scenes/gameplay/bushes/bush_manager.tscn" id="18_kakpp"]
 [ext_resource type="PackedScene" uid="uid://spf8e1t04aev" path="res://scenes/tutorial/draw_line_graphic.tscn" id="19_brn3d"]
@@ -41,7 +40,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_023ww")
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(311, 376)
+position = Vector2(300, -4500)
 collision_layer = 3
 collision_mask = 11
 floor_stop_on_slope = false
@@ -66,6 +65,7 @@ position = Vector2(345, -47)
 motion_scale = Vector2(0.6, 0.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.721569, 0.760784, 0.615686, 1)
 position = Vector2(-45, -1583)
 texture = ExtResource("9_kd73l")
 
@@ -95,6 +95,11 @@ position = Vector2(-300, 50)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameFinish/StaticBody2D"]
 shape = SubResource("RectangleShape2D_fnds3")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameFinish"]
+modulate = Color(0, 0, 0, 0)
+scale = Vector2(50, 50)
+texture = ExtResource("4_iy44v")
 
 [node name="DetectPlayer" parent="." instance=ExtResource("14_shnt8")]
 position = Vector2(278, -2283)
@@ -133,27 +138,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_iy44v")
 
 [node name="RockSpawner" parent="Camera2D" instance=ExtResource("8_w2p7d")]
-
-[node name="DialogueManager" type="Control" parent="Camera2D"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -283.0
-offset_top = -319.0
-offset_right = -283.0
-offset_bottom = -319.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("15_3cmk4")
-
-[node name="Label" type="Label" parent="Camera2D/DialogueManager"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 22.0
-offset_right = 69.0
-offset_bottom = 45.0
-text = "Text"
 
 [node name="Joke" parent="." instance=ExtResource("17_w0pda")]
 position = Vector2(304, 522)
@@ -194,6 +178,5 @@ position = Vector2(-471, -7)
 position = Vector2(498, -1046)
 
 [connection signal="game_finished" from="GameFinish" to="TrampolineManager" method="_on_game_finish_game_finished"]
-[connection signal="game_finished" from="GameFinish" to="Camera2D/DialogueManager" method="_on_game_finish_game_finished"]
 [connection signal="on_player_entered" from="DetectPlayer" to="Camera2D/RockSpawner" method="start"]
 [connection signal="on_player_entered" from="Tutorial/Roca/Trigger" to="Tutorial/Roca" method="_on_player_entered"]
