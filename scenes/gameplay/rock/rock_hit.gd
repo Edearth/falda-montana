@@ -17,6 +17,7 @@ func push_player_down(player: Node2D):
 	tween.tween_callback(restart_physics_and_free)
 
 func restart_physics_and_free():
+	Global.a_rock_was_destroyed.emit()
 	Global.rock_manager.propagate_call("set_sleeping", [false])
 	call_deferred("queue_free")
 	get_parent().queue_free()

@@ -62,8 +62,8 @@ func _physics_process(delta):
 func handle_bush_collision(collided_node: Node):
 	if collided_node.is_in_group("bushes"):
 		if collided_node.has_method("hit_bush"):
+			
 			collided_node.hit(null, null) #not needed
-	
 
 func update_sprites():
 	$Sprite2D.update_sprites()

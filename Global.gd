@@ -1,6 +1,7 @@
 extends Node
 
 signal player_bounced_on_trampoline
+signal a_rock_was_destroyed
 
 var rock_manager: Node
 

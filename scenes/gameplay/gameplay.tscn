@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=28 format=3 uid="uid://iaq32s2ve124"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/rock/rock_manager.gd" id="1_023ww"]
 [ext_resource type="Script" path="res://scenes/gameplay/bottom_floor.gd" id="1_id8xs"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://spf8e1t04aev" path="res://scenes/tutorial/draw_line_graphic.tscn" id="19_brn3d"]
 [ext_resource type="PackedScene" uid="uid://dkng6ffmfdfvj" path="res://scenes/gameplay/bushes/bush.tscn" id="19_ownqs"]
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_roca.gd" id="20_8urup"]
+[ext_resource type="AudioStream" uid="uid://cp8me3taxqmih" path="res://assets/audio/rocks.ogg" id="22_tn47s"]
+[ext_resource type="Script" path="res://scenes/gameplay/rock_destroyed_sound.gd" id="23_bygat"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_j5mx2"]
 b = Vector2(600, 0)
@@ -193,6 +195,10 @@ scale = Vector2(-1.03301, 0.256824)
 position = Vector2(-471, -7)
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Roca"]
+
+[node name="RockDestroyedSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_tn47s")
+script = ExtResource("23_bygat")
 
 [connection signal="game_finished" from="GameFinish" to="TrampolineManager" method="_on_game_finish_game_finished"]
 [connection signal="on_player_entered" from="DetectPlayer" to="Camera2D/RockSpawner" method="start"]
