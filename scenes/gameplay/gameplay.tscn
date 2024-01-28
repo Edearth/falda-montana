@@ -21,11 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dkng6ffmfdfvj" path="res://scenes/gameplay/bushes/bush.tscn" id="19_ownqs"]
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_roca.gd" id="20_8urup"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bnr8y"]
-radius = 32.0
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_j5mx2"]
 b = Vector2(600, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bnr8y"]
+radius = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnds3"]
 size = Vector2(600, 100)
@@ -34,25 +34,6 @@ size = Vector2(600, 100)
 size = Vector2(64, 64)
 
 [node name="Main" type="Node2D"]
-
-[node name="RockManager" type="Node2D" parent="."]
-script = ExtResource("1_023ww")
-
-[node name="PlayerCharacter" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(300, 350)
-collision_layer = 3
-collision_mask = 11
-floor_stop_on_slope = false
-script = ExtResource("1_x4a8u")
-max_bounce = 2.4
-min_bounce = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
-shape = SubResource("CircleShape2D_bnr8y")
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCharacter"]
-texture = ExtResource("2_qlemm")
-script = ExtResource("3_ljvf3")
 
 [node name="TrampolineManager" type="Node2D" parent="."]
 script = ExtResource("2_x7po0")
@@ -83,6 +64,25 @@ texture_mode = 1
 script = ExtResource("2_mp23v")
 
 [node name="Map" parent="." instance=ExtResource("11_wuw5i")]
+
+[node name="RockManager" type="Node2D" parent="."]
+script = ExtResource("1_023ww")
+
+[node name="PlayerCharacter" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(300, 350)
+collision_layer = 3
+collision_mask = 11
+floor_stop_on_slope = false
+script = ExtResource("1_x4a8u")
+max_bounce = 2.4
+min_bounce = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
+shape = SubResource("CircleShape2D_bnr8y")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCharacter"]
+texture = ExtResource("2_qlemm")
+script = ExtResource("3_ljvf3")
 
 [node name="GameFinish" type="Node2D" parent="."]
 position = Vector2(-6, -5687)
