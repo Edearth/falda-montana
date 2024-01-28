@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://iaq32s2ve124"]
+[gd_scene load_steps=26 format=3 uid="uid://iaq32s2ve124"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/rock/rock_manager.gd" id="1_023ww"]
 [ext_resource type="Script" path="res://scenes/gameplay/bottom_floor.gd" id="1_id8xs"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cym04to8josov" path="res://assets/fondo/fondo.png" id="9_kd73l"]
 [ext_resource type="PackedScene" uid="uid://cwvjgieuiww77" path="res://scenes/gameplay/trampoline/map.tscn" id="11_wuw5i"]
 [ext_resource type="Script" path="res://scenes/gameplay/game_finish.gd" id="12_wvmty"]
+[ext_resource type="AudioStream" uid="uid://bpsmbf14mp08" path="res://assets/audio/win.ogg" id="13_dlsl4"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/detect_player.tscn" id="14_shnt8"]
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_movimiento.gd" id="18_bxi7s"]
 [ext_resource type="PackedScene" uid="uid://uijxw3520kld" path="res://scenes/gameplay/bushes/bush_manager.tscn" id="18_kakpp"]
@@ -84,6 +85,9 @@ shape = SubResource("CircleShape2D_bnr8y")
 texture = ExtResource("2_qlemm")
 script = ExtResource("3_ljvf3")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerCharacter"]
+volume_db = -5.0
+
 [node name="GameFinish" type="Node2D" parent="."]
 position = Vector2(-6, -5687)
 script = ExtResource("12_wvmty")
@@ -99,6 +103,9 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 modulate = Color(0, 0, 0, 0)
 scale = Vector2(50, 50)
 texture = ExtResource("4_iy44v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameFinish"]
+stream = ExtResource("13_dlsl4")
 
 [node name="DetectPlayer" parent="." instance=ExtResource("14_shnt8")]
 position = Vector2(311, -705)

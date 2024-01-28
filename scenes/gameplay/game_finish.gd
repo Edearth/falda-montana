@@ -13,6 +13,7 @@ func _process(delta):
 	if player_character.position.y < position.y - 100 and !is_game_finished:
 		$StaticBody2D.position.x = 300
 		game_finished.emit()
+		$AudioStreamPlayer.play()
 		var tween = create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 1, .5)
 		await tween.finished
