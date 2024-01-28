@@ -40,7 +40,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_023ww")
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(300, -4500)
+position = Vector2(300, 350)
 collision_layer = 3
 collision_mask = 11
 floor_stop_on_slope = false
@@ -146,12 +146,15 @@ position = Vector2(304, 522)
 position = Vector2(235, -1666)
 
 [node name="Bush" parent="BushManager" instance=ExtResource("19_ownqs")]
+rotation = -3.72211
 
 [node name="Bush2" parent="BushManager" instance=ExtResource("19_ownqs")]
 position = Vector2(52, -26)
+rotation = 5.59885
 
 [node name="Bush3" parent="BushManager" instance=ExtResource("19_ownqs")]
 position = Vector2(-52, 18)
+rotation = -0.583625
 
 [node name="Tutorial" type="Node" parent="."]
 
