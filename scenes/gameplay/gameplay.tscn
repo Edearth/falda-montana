@@ -159,6 +159,7 @@ text = "Text"
 position = Vector2(304, 522)
 
 [node name="BushManager" parent="." instance=ExtResource("18_kakpp")]
+position = Vector2(235, -1666)
 
 [node name="Bush" parent="BushManager" instance=ExtResource("19_ownqs")]
 

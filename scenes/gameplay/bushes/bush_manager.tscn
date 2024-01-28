@@ -3,5 +3,4 @@
 [ext_resource type="Script" path="res://scenes/gameplay/bushes/bush_manager.gd" id="1_ijynx"]
 
 [node name="BushManager" type="Node2D"]
-position = Vector2(230, -1682)
 script = ExtResource("1_ijynx")
