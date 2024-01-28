@@ -11,6 +11,7 @@ func _get_configuration_warnings():
 
 func hit(_position: Vector2, _normal: Vector2):
 	$AnimationPlayer.play("hit")
+	$AudioStreamPlayer.play()
 	has_been_hit = true
 	get_parent().hit()
 

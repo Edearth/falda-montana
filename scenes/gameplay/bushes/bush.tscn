@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkng6ffmfdfvj"]
+[gd_scene load_steps=10 format=3 uid="uid://dkng6ffmfdfvj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/bushes/bush_controller.gd" id="1_tttle"]
-[ext_resource type="Texture2D" uid="uid://cxq3n35ol6r6h" path="res://assets/arbusto/01_arbusto.png" id="2_nbxbh"]
+[ext_resource type="Texture2D" uid="uid://whijp5dsxxa2" path="res://assets/arbusto/01_arbusto.png" id="2_nbxbh"]
+[ext_resource type="AudioStream" uid="uid://d4nuya6rdgtet" path="res://assets/audio/bush.ogg" id="3_7incl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbnvt"]
 radius = 32.0
@@ -127,3 +128,6 @@ libraries = {
 "": SubResource("AnimationLibrary_baj5c")
 }
 autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7incl")
