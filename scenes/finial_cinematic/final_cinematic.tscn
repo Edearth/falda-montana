@@ -214,3 +214,5 @@ libraries = {
 "": SubResource("AnimationLibrary_r1id2")
 }
 autoplay = "transition"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

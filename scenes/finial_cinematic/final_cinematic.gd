@@ -1,5 +1,11 @@
 extends Control
 
+const TALK_SOUNDS = [
+	"res://assets/audio/dialogue_1.ogg",
+	"res://assets/audio/dialogue_2.ogg",
+	"res://assets/audio/dialogue_3.ogg",
+	"res://assets/audio/dialogue_4.ogg"
+]
 const DIALOGUES = {
 	0: "[b]Hola bbsita[/b] no te pongas tristona reina",
 	1: "Voy a contarte [b]unos chistecitos[/b] xra k te rias un poco gatita jeje",
@@ -22,10 +28,18 @@ func _ready():
 	await get_tree().create_timer(2).timeout
 	jokes_index = 0
 	$RatText.text = DIALOGUES[0]
+	play_talk_sound()
+
+func play_talk_sound():
+	var audio_clip = TALK_SOUNDS.pick_random()
+	$"../AudioStreamPlayer".stream = load(audio_clip)
+	$"../AudioStreamPlayer".play()
 
 func _input(event):
 	if jokes_index != -1 \
 		and event is InputEventMouseButton and event.pressed:
+			
+		play_talk_sound()
 		
 		jokes_index += 1
 		var max_jokes = Global.jokes_collected + 2
