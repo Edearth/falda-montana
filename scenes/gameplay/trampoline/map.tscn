@@ -317,3 +317,48 @@ position = Vector2(496, -4877)
 [node name="SquareWall2" parent="." instance=ExtResource("1_uidw3")]
 position = Vector2(487, -1780)
 scale = Vector2(1.6551, 0.214877)
+
+[node name="SquareWall3" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(178, -800)
+rotation = 0.785397
+scale = Vector2(3.60672, 0.214877)
+
+[node name="SquareWall4" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(81, 64)
+rotation = 0.785397
+scale = Vector2(1.51368, 0.214877)
+
+[node name="SquareWall5" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(82.9999, -1726)
+rotation = 0.785397
+scale = Vector2(1.51368, 0.214877)
+
+[node name="SquareWall6" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(111, -3110)
+rotation = 0.785397
+scale = Vector2(2.22079, 0.214877)
+
+[node name="SquareWall7" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(174, -4128)
+rotation = 0.785397
+scale = Vector2(3.55014, 0.214877)
+
+[node name="SquareWall8" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(82.0004, -5374)
+rotation = 0.785397
+scale = Vector2(1.45708, 0.214877)
+
+[node name="SquareWall9" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(518, -5064)
+rotation = -0.785397
+scale = Vector2(1.45708, 0.214877)
+
+[node name="SquareWall10" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(425, -3547)
+rotation = -0.785397
+scale = Vector2(3.71983, 0.214877)
+
+[node name="SquareWall11" parent="." instance=ExtResource("1_uidw3")]
+position = Vector2(517, -119)
+rotation = -0.785397
+scale = Vector2(1.45709, 0.214877)
