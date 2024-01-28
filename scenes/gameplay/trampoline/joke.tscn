@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpucibn4og47f"]
+[gd_scene load_steps=11 format=3 uid="uid://dpucibn4og47f"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/joke.gd" id="1_qfnt6"]
 [ext_resource type="Texture2D" uid="uid://2xkvh2k2g4cy" path="res://assets/chiste.png" id="2_3a6dt"]
 [ext_resource type="AudioStream" uid="uid://b657kow7oflyd" path="res://assets/audio/chistecito.ogg" id="3_ajwja"]
+[ext_resource type="AudioStream" uid="uid://sm7j1y4u6xc4" path="res://assets/audio/music.ogg" id="4_p8n8o"]
 
 [sub_resource type="Curve" id="Curve_4wmw3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.26944, 0.0, 0, 0]
@@ -135,6 +136,10 @@ autoplay = "idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ajwja")
+volume_db = -10.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_p8n8o")
 volume_db = -10.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
