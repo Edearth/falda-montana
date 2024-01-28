@@ -109,6 +109,9 @@ position = Vector2(311, -4166)
 [node name="DetectPlayer2" parent="." instance=ExtResource("14_shnt8")]
 position = Vector2(311, -3309)
 
+[node name="DetectPlayer4" parent="." instance=ExtResource("14_shnt8")]
+position = Vector2(270, -17)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 400)
 script = ExtResource("5_h12vd")
@@ -188,4 +191,5 @@ position = Vector2(371, -1166)
 [connection signal="on_player_entered" from="DetectPlayer" to="Camera2D/RockSpawner" method="start"]
 [connection signal="on_player_entered" from="DetectPlayer3" to="Camera2D/RockSpawner" method="start"]
 [connection signal="on_player_entered" from="DetectPlayer2" to="Camera2D/RockSpawner" method="stop"]
+[connection signal="on_player_entered" from="DetectPlayer4" to="Camera2D/RockSpawner" method="stop"]
 [connection signal="on_player_entered" from="Tutorial/Roca/Trigger" to="Tutorial/Roca" method="_on_player_entered"]
