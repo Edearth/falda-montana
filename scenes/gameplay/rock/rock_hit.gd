@@ -11,7 +11,6 @@ func break_rock():
 
 func push_player_down(player: Node2D):
 	set_deferred("monitoring", false)
-	#Global.rock_manager.set_deferred("sleeping", true)
 	Global.rock_manager.propagate_call("set_sleeping", [true])
 	player.velocity = Vector2.DOWN * push_down_velocity
 	var tween := Global.create_shake_node2d_tween(player)
