@@ -36,8 +36,9 @@ func _physics_process(delta):
 		
 		if is_trampoline:
 			Global.player_bounced_on_trampoline.emit()
-		
-		velocity = velocity.bounce(collision.get_normal()) * lerped_bounce
+		var target_velocity = velocity.bounce(collision.get_normal()) * lerped_bounce
+		target_velocity.x /= 2
+		velocity = target_velocity
 		update_sprites()
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit(position, collision.get_normal())
