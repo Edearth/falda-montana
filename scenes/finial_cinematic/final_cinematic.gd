@@ -1,8 +1,8 @@
 extends Control
 
 const DIALOGUES = {
-	0: "Hola bbsita no te pongas tristona reina",
-	1: "Voy a contarte unos chistecitos xra k te rias un poco gatita jeje",
+	0: "[b]Hola bbsita[/b] no te pongas tristona reina",
+	1: "Voy a contarte [b]unos chistecitos[/b] xra k te rias un poco gatita jeje",
 }
 var jokes = [
 	"¿Cómo se emborrachan los pingüinos? Con Licor del Polo.",
@@ -32,11 +32,13 @@ func _input(event):
 		if jokes_index == 1:
 			$RatText.text = DIALOGUES[1]
 		elif max_jokes > jokes_index:
+			$"../Sprites/Sprite2D2/AnimationPlayer".play("idle")
 			jokes_used = jokes.duplicate()
 			jokes.shuffle()
 			var current_joke = jokes.pop_front()
 			print(current_joke)
 			$RatText.text = current_joke
 		else:
-			$RatText.text = "He encontrado " + str(Global.jokes_collected) \
-				+ " chistecitoh, espero que te hayan gustado gatita!!"
+			$"../Sprites/Sprite2D2/AnimationPlayer".play("idle")
+			$RatText.text = "He encontrado [b]" + str(Global.jokes_collected) \
+				+ " chistecitoh[/b], espero que te hayan gustado gatita!!"
