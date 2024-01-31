@@ -5,7 +5,7 @@ env:
   ITCHIO_USERNAME: edearth
   ITCHIO_GAME: falda-montana
   BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-  GODOT_VERSION: 4.2.1
+  GODOT_VERSION: 4.2.1 #if you change it, remember to update the image version (line 15)
 
 jobs:
   web:
@@ -25,7 +25,7 @@ jobs:
       - name: Web Build
         run: |
           mkdir build
-          godot --export-release --headless "html5" ./build/index.html
+          godot --export-release --headless "web" ./build/index.html
       - name: Itch.io Deploy
         run: |
           ls ./build
