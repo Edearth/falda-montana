@@ -12,7 +12,7 @@ const _shake_level: float = 30
 const _duration: float = .25
 const _frequency: int = 10
 const _property_to_shake: String = "position"
-func create_shake_node2d_tween(node: Node2D, _shake_level: float = _shake_level, duration: float = _duration, frequency: float = _frequency, property_to_shake: String = _property_to_shake) -> Tween:
+func create_shake_node2d_tween(node: Node2D, __shake_level: float = _shake_level, duration: float = _duration, frequency: float = _frequency, property_to_shake: String = _property_to_shake) -> Tween:
 	var tween: Tween = get_tree().create_tween()
 	var period = duration / frequency
 	for i in range(frequency - 1):
