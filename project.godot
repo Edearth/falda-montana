@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Malaga-jam-2024"
+config/name="La Falda de la Montaña"
+config/description="Game made for the MálagaJam Weekend 17"
 run/main_scene="res://scenes/gameplay/gameplay.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
