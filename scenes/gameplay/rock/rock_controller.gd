@@ -20,7 +20,7 @@ func do_launch_rock():
 	set_freeze_enabled(false)
 	rock_starts_falling.emit()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var bodies = get_colliding_bodies()
 	for body in bodies:
 		if body.is_in_group("trampoline"):

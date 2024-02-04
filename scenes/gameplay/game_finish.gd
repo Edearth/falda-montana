@@ -7,7 +7,7 @@ signal game_finished
 var final_cinematic = preload("res://scenes/finial_cinematic/final_cinematic.tscn").instantiate()
 var is_game_finished := false
 
-func _process(delta):
+func _process(_delta):
 	if is_game_finished:
 		return
 	if player_character.position.y < position.y - 100 and !is_game_finished:
@@ -17,6 +17,6 @@ func _process(delta):
 		var tween = create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 1, .5)
 		await tween.finished
-		await get_tree().create_timer(.5)
+		#await get_tree().create_timer(.5)
 		get_tree().change_scene_to_file("res://scenes/finial_cinematic/final_cinematic.tscn")
 		queue_free()

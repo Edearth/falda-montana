@@ -8,7 +8,7 @@ func _ready():
 	var new_shape = SegmentShape2D.new()
 	collision_shape_2d.set_shape(new_shape)
 
-func _process(delta):
+func _process(_delta):
 	if is_editing:
 		update_shape(get_global_mouse_position() - position)
 
