@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://spf8e1t04aev"]
+[gd_scene load_steps=7 format=3 uid="uid://spf8e1t04aev"]
 
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_draw_line_controller.gd" id="1_gma8m"]
-[ext_resource type="Texture2D" uid="uid://4d1odi00mqn7" path="res://assets/pointer.svg" id="2_c465k"]
+[ext_resource type="Texture2D" uid="uid://dtt0hpq8wd37p" path="res://assets/cuerda/medio_cuerda.png" id="2_uybak"]
+[ext_resource type="Texture2D" uid="uid://bmsvsswibmidx" path="res://assets/raton_tutorial/raton_tutorial.png" id="2_xk3d0"]
 
 [sub_resource type="Animation" id="Animation_5e3en"]
 length = 0.001
@@ -95,12 +96,22 @@ script = ExtResource("1_gma8m")
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 105
 points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(1, 0, 0, 0.654902)
+width = 30.0
+default_color = Color(0, 0.862745, 0.894118, 0.784314)
+texture = ExtResource("2_uybak")
+texture_mode = 1
+
+[node name="Line2D2" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0)
+width = 30.0
+texture = ExtResource("2_uybak")
+texture_mode = 1
 
 [node name="Pointer" type="Sprite2D" parent="."]
 z_index = 110
-texture = ExtResource("2_c465k")
-offset = Vector2(30, 30)
+rotation = -0.436332
+texture = ExtResource("2_xk3d0")
+offset = Vector2(0, 30)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
