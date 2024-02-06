@@ -136,13 +136,28 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(250, 400), Vector2(300, 400)]
+"values": [Vector2(100, 400), Vector2(200, 400)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8v30k"]
 _data = {
 "RESET": SubResource("Animation_1hq7y"),
 "start": SubResource("Animation_pty7g")
+}
+
+[sub_resource type="Animation" id="Animation_2k7xu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.45, 0.45)]
 }
 
 [sub_resource type="Animation" id="Animation_44s8t"]
@@ -159,21 +174,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0.45, 0.45)]
-}
-
-[sub_resource type="Animation" id="Animation_2k7xu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.45, 0.45)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bs2r1"]
@@ -202,7 +202,7 @@ texture = ExtResource("1_xi1ml")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
 position = Vector2(250, 400)
-scale = Vector2(0.53, 0.53)
+scale = Vector2(1.05, 1.05)
 texture = ExtResource("2_ixcqw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Sprite2D2"]
@@ -213,7 +213,7 @@ autoplay = "cry"
 
 [node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
 position = Vector2(330, 380)
-scale = Vector2(0.55, 0.55)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("3_ks4p6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
