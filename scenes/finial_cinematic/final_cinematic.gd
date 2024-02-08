@@ -37,8 +37,8 @@ func play_talk_sound():
 
 func _input(event):
 	if jokes_index != -1 \
-		and event is InputEventMouseButton and event.pressed:
-		
+		and event is InputEventMouseButton and event.pressed \
+		and event.button_index == 1:
 		play_talk_sound()
 		
 		jokes_index += 1
@@ -54,13 +54,17 @@ func _input(event):
 			jokes_used = jokes.duplicate()
 			jokes.shuffle()
 			var current_joke = jokes.pop_front()
-			print(current_joke)
 			$RatText.text = current_joke
-		else:
+		elif max_jokes + 1 > jokes_index:
 			laugh()
-			
 			$RatText.text = "He encontrado [b]" + str(Global.jokes_collected) \
 				+ " chistecitoh[/b], espero que te hayan gustado gatita!!"
+		elif max_jokes + 2 > jokes_index:
+			laugh()
+			$RatText.text = "[b]FIN[/b]\nPulsa para volver a jugar."
+		else:
+			get_tree().change_scene_to_file("res://scenes/gameplay/gameplay.tscn")
+			queue_free()
 
 func laugh():
 	$"../Sprites/Sprite2D2/AnimationPlayer".play("laugh")
